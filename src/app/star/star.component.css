@@ -1,0 +1,12 @@
+.fa-star{
+    font-size: 16px !important;
+    color: black;
+}
+
+*{
+    margin: auto;
+}
+
+.crop {
+    overflow: hidden;
+}
