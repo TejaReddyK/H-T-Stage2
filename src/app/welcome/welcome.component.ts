@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggingService } from 'shared/logging.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponent {
 
-  msg:string="teja ";
+
+  constructor(private logService:LoggingService){};
+
+  msg:string="teja";
+  nums:number=0;
+  logMsg:string='';
+  
+  callLog():void{
+    this.logMsg = this.logService.log();
+  }
   
 }

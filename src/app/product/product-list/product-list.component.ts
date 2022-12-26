@@ -1,4 +1,5 @@
 import { Component , EventEmitter, OnInit, Output} from '@angular/core';
+import { LoggingService } from 'shared/logging.service';
 import { ProductService } from 'shared/product.service';
 import { Categories, IProduct } from './product';
 
@@ -10,7 +11,11 @@ import { Categories, IProduct } from './product';
 export class ProductListComponent implements OnInit{
 
 
-  constructor(private productService:ProductService){};
+  constructor(private productService:ProductService, private logService:LoggingService){};
+
+  displayProd(){
+      this.logService.logProducts(this.products);
+  }
 
   ngOnInit(): void {
     this.filteredProducts=this.products;
