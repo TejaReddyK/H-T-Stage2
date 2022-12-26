@@ -14,9 +14,9 @@ table{
     background-color: aqua;
     text-align: center;
     font-size: 20px;
+    padding: 10px;
 }
 table img{
-    background-color: bisque;
     height: 100px;
     width: 200px;
 } 

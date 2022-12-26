@@ -1,4 +1,5 @@
 import { Component , EventEmitter, OnInit, Output} from '@angular/core';
+import { ProductService } from 'shared/product.service';
 import { Categories, IProduct } from './product';
 
 @Component({
@@ -7,6 +8,10 @@ import { Categories, IProduct } from './product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
+
+
+  constructor(private productService:ProductService){};
+
   ngOnInit(): void {
     this.filteredProducts=this.products;
   }
@@ -17,40 +22,7 @@ export class ProductListComponent implements OnInit{
  
   filteredProducts:IProduct[]=[];
 
-  products:IProduct[]=[
-    {
-      id:1 ,
-      name:'dog',
-      price: 200,
-      image: '../../assets/dog.jpg',
-      category: Categories.Animal,
-      rating: 3
-    },
-    {
-      id:5,
-      name:'Tshirt',
-      price:200,
-      image: '../../assets/tshirt.jpg',
-      category: Categories.Clothing,
-      rating: 3.7
-    },
-    {
-      id:10,
-      name:'Table',
-      price: 1200,
-      image: '../../assets/table.jpg',
-      category: Categories.Furniture,
-      rating: 4.5
-    },
-    {
-      id:16,
-      name:'pant',
-      price:400,
-      image: '../../assets/pant.jpg',
-      category: Categories.Clothing,
-      rating: 4
-    }
-  ]
+  products:IProduct[]= this.productService.getProducts();
 
   filterProd():void{
      this.filteredProducts = this.products.filter((p:IProduct)=>p.category === (this.category));
@@ -62,6 +34,22 @@ export class ProductListComponent implements OnInit{
   }
 
   @Output() emitProductToCart:EventEmitter<IProduct>= new EventEmitter<IProduct>();
+
+  increaseQuantity(p:IProduct):void{
+     let index = this.products.findIndex((prod)=> p.id === prod.id);
+     this.products[index].quantity+=1;
+     this.emitProductToCart.emit(p);
+  }
+
+  decreaseQuantity(p:IProduct):void{
+    let index = this.products.findIndex((prod)=> p.id === prod.id);
+   
+    if(this.products[index].quantity!=0){
+      this.products[index].quantity-=1;
+      this.emitProductToCart.emit(p);
+    }
+    
+  }
 
   //called on click of btn add to cart and emit the product to app component
   onSelect(p:IProduct){
