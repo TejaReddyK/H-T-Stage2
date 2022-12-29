@@ -1,23 +1,35 @@
-<h1>Hello world</h1>
-<app-welcome></app-welcome>
+
 <body>
-<!-- 
-     <div id="flexBox">
-        <pent-house></pent-house>
-        <app-welcome></app-welcome>
+    <app-student-add></app-student-add>
+   <!--  <app-navbar></app-navbar>
+    <app-trustee></app-trustee>
+    
+
+    <app-event-detail></app-event-detail>
+     -->
+    <!-- <h1>Hello world</h1> -->
+
+    <div id="flexBox">
+    
+      <!--   <app-welcome></app-welcome> -->
     </div>
-    <div>
+
+    <!-- <div>
         <app-flat-list></app-flat-list>
         <app-animal-list></app-animal-list>
     </div> -->
 
     <div>
+        <!-- emitProductToCart is emitter output in product-list which is emiting product to
+             app's  receiveEmittedProduct() function
+        -->
         <app-product-list (emitProductToCart) = "receiveEmittedProduct($event)"></app-product-list>
     </div>
 
     <div>
+        <!-- cartProducts is in app.component.ts -->
+        <!-- cartList is property of cart-list component -->
         <app-cart-list [cartList]="cartProducts"></app-cart-list>
     </div>
-
 
 </body>

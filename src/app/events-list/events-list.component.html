@@ -1,0 +1,61 @@
+<div class="parent">
+
+    <div *ngFor="let ev of eventsList;">
+
+        <div class="card" style="width: 24rem;">
+            <img class="card-img-top img-fluid" height="100px" width="100px" [src]="ev.imageUrl" alt="Card image cap">
+            <div class="card-header text-center">
+                <h4>#{{ev.id}} {{ev.name}}</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h6>Date and Time: </h6>
+                        <h6 class="text-secondary"> {{ ev.date}}, {{ ev.time}}</h6> 
+                    </li>
+                    <li class="list-group-item">
+                        <h6>Price:</h6> 
+                        <h6 class="text-secondary">{{ev.price}}</h6>
+                    </li>
+                    <li class="list-group-item">
+                        <h6>Location: </h6> 
+                        <h6 class="text-secondary">{{ev.location.address}}, {{ev.location.city}}, {{ev.location.country}}</h6>
+                    </li>
+                    <li class="list-group-item" style="flex-direction: column;" 
+                    *ngFor="let session of ev.sessions;">
+                        <h6>Session {{session.id}} on:  {{session.name}}</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h6>Presentor: </h6>
+                                <h6 class="text-secondary">{{session.presentor}}</h6>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Duration: </h6>
+                                <h6 class="text-secondary">{{session.duration}}</h6>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Level: </h6>
+                                <h6 class="text-secondary">{{session.level}}</h6>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Voters: </h6>
+                                <h6 class="text-secondary">
+                                    <span>
+                                        {{session.voters}}
+                                    </span>
+                                </h6>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        
+    </div>
+    </div>
+
+<div id="data">{{event|json}}</div>
+
+<div id="messageDisplay">{{ message }}</div>

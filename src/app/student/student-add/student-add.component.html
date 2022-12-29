@@ -1,0 +1,134 @@
+
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <p>
+            <label for="id">Id</label>
+            <input class="form-control"
+            type="text" name="id" id="id" formControlName="id">
+    
+        </p>
+        <div *ngIf="id">
+          <div *ngIf="!id.valid && (id.dirty || id.touched)">
+    
+            <div [hidden]="!id.errors?.['required']">
+                Id is required
+            </div>
+    
+            </div>
+          </div>
+    
+          <p>
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name"
+            formControlName="name">
+    
+        </p>
+        <div *ngIf="name">
+          <div  *ngIf="!name.valid && (name.dirty || name.touched)">
+    
+            <div [hidden]="!name.errors?.['required']">
+                Name is required
+            </div>
+    
+            </div>
+          </div>
+    
+          <p>
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email"
+            formControlName="email">
+    
+        </p>
+        <div *ngIf="email">
+          <div *ngIf="!email.valid && (email.dirty || email.touched)">
+    
+            <div [hidden]="!email.errors?.['required']">
+                email is required
+            </div>
+    
+            </div>
+          </div>
+    
+    
+          <p>
+          <label for="gender">Gender</label>
+          M <input  type="radio" name="gender" id="gender" value="male" formControlName="gender">
+          F <input   type="radio" name="gender" id="gender" value="female" formControlName="gender">
+    
+          </p>
+          <div *ngIf="gender">
+          <div *ngIf="!gender.valid && (gender.dirty || gender.touched)">
+            <div [hidden]="!gender.errors?.['required']">
+                gender is required
+            </div>
+    
+          </div>
+        </div>
+    
+        <div formGroupName="address">
+    
+            <p>
+                <label for="city">City</label>
+                <input class="form-control"  type="text" name="city" id="city"
+                formControlName="city">
+    
+            </p>
+            <div *ngIf="city">
+              <div *ngIf="!city.valid && (city.dirty || city.touched)">
+    
+                <div [hidden]="!city.errors?.['required']">
+                    city is required
+                </div>
+    
+                </div>
+              </div>
+    
+    
+    
+    
+    
+        <p>
+            <label for="state">state</label>
+            <input  class="form-control" type="text" name="state" id="state"
+            formControlName="state">
+    
+        </p>
+        <div *ngIf="state">
+          <div *ngIf="!state.valid && (state.dirty || state.touched)">
+    
+            <div [hidden]="!state.errors?.['required']">
+                state is required
+            </div>
+    
+            </div>
+          </div>
+    
+    
+    
+          <p>
+            <label for="country">Country</label>
+            <input  class="form-control" type="text" name="country" id="country"
+            formControlName="country">
+    
+        </p>
+        <div *ngIf="country">
+          <div *ngIf="!country.valid && (country.dirty || country.touched)">
+    
+            <div [hidden]="!country.errors?.['required']">
+                country is required
+            </div>
+    
+            </div>
+          </div>
+          </div>
+    
+    
+    
+    
+    <button type="submit" [disabled]="!studentForm.valid">Submit</button>
+    </div>
+    
+    </form>
+    
+    {{studentForm.valid}}
+    {{studentForm.value | json}}

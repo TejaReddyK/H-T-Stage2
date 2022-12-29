@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,18 @@ import { StarComponent } from './star/star.component';
 import { CartComponent } from './cart/cart.component';
 import { RepeatDataPipe } from './repeat-data.pipe';
 import { AnimalListComponent } from './animal/animal-list/animal-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { EventDetailComponent } from './events/event-details/event-details.component';
+import { EventListComponent } from './events-list/events-list.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDbEventService } from 'shared/inMemDbEventService';
+import { TrusteeComponent } from './trustee/trustee.component';
+import { StudentAddComponent } from './student/student-add/student-add.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,12 +33,24 @@ import { AnimalListComponent } from './animal/animal-list/animal-list.component'
     StarComponent,
     CartComponent,
     RepeatDataPipe,
-    AnimalListComponent
+    AnimalListComponent,
+    NavbarComponent,
+    EventDetailComponent,
+    EventListComponent,
+    TrusteeComponent,
+    StudentAddComponent,
+  
+    
+    
+
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDbEventService),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

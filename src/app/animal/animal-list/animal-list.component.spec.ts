@@ -1,4 +1,6 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { AnimalListComponent } from './animal-list.component';
 
@@ -19,5 +21,22 @@ describe('AnimalListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should display the header name',()=>{
+
+    const data ="Animal List";
+  
+    const rootEle:DebugElement = fixture.debugElement;
+  
+    const header =rootEle.query(By.css('.card-header'));
+  
+  
+  
+    const headerElement:HTMLElement= header.nativeElement;
+  
+  
+  
+    expect(headerElement.textContent).toEqual('Animal List');
+  
   });
 });

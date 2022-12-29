@@ -1,0 +1,97 @@
+[
+    {
+        "id":1,
+        "name":"dog",
+        "date": "23/12/2022",
+        "time":"08:30 am",
+        "price":1000,
+        "imageUrl":"../assets/dog.jpg",
+        "location":{
+            "address":"123",
+            "city":"Delhi",
+            "country":"India"
+        },
+        "sessions":[
+            {
+                "id":10,
+                "name":"AI",
+                "presentor":"teja",
+                "duration":"",
+                "level":10,
+                "voters":["leo", "snoppy", "tufffy"]
+            },
+            {
+                "id":11,
+                "name":"",
+                "presentor":"satya",
+                "duration":"",
+                "level":11,
+                "voters":["leo", "snoppy"]
+            }
+        ]
+    },
+
+    {
+        "id":2,
+        "name":"cat",
+        "date": "23/12/2022",
+        "time":"08:30 am",
+        "price":102,
+        "imageUrl":"../assets/cat.jpg",
+        "location":{
+            "address":"123",
+            "city":"Delhi",
+            "country":"India"
+        },
+        "sessions":[
+            {
+                "id":20,
+                "name":"AI",
+                "presentor":"satya",
+                "duration":"",
+                "level":10,
+                "voters":["leo", "snoppy", "tufffy"]
+            },
+            {
+                "id":21,
+                "name":"",
+                "presentor":"sai",
+                "duration":"",
+                "level":11,
+                "voters":["leo", "snoppy", "tufffy"]
+            }
+        ]
+    },
+
+    {
+        "id":3,
+        "name":"tiger",
+        "date": "23/12/2022",
+        "time":"08:30 am",
+        "price":102,
+        "imageUrl":"../assets/tiger.jpg",
+        "location":{
+            "address":"123",
+            "city":"Delhi",
+            "country":"India"
+        },
+        "sessions":[
+            {
+                "id":10,
+                "name":"AI",
+                "presentor":"reddy",
+                "duration":"",
+                "level":10,
+                "voters":["leo", "snoppy", "tufffy"]
+            },
+            {
+                "id":11,
+                "name":"",
+                "presentor":"sai",
+                "duration":"",
+                "level":11,
+                "voters":["leo","tufffy"]
+            }
+        ]
+    }
+]

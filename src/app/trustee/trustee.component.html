@@ -1,0 +1,135 @@
+<div class="container">
+
+    <form autocomplete="false" #trusteeForm="ngForm" (ngSubmit)="onSubmit(trusteeForm)">
+    
+        <div class="form-group">
+    
+              <label for="trusteeId">Id</label>
+    
+              <input #trusteeId="ngModel" type="number" class="form-control" id="trusteeId"
+    
+                required name="trusteeId" ngModel>
+    
+        </div>
+    
+        <div class="form-group">
+    
+              <label for="name">Name</label>
+    
+              <input type="text" class="form-control" id="name" name="name" required #name="ngModel" ngModel minlength="5">
+    
+              <div id="id" class="form-text"
+    
+                *ngIf="!name.valid && (name?.dirty || name?.touched)">
+    
+                <span class="error" *ngIf="name.errors?.['required']">Name is Required</span>
+    
+                <span class="error" *ngIf="name.errors?.['minlength']">Min length of Name is 5</span>
+    
+            </div>    
+    
+       </div>
+    
+           
+    
+        <div>
+    
+            <label for="gender">Gender</label>
+    
+            <br>
+    
+                <input class="form-check-input" type="radio" name="gender" id="male" value="male" #gender="ngModel" ngModel>
+    
+                <label class="form-check-label" for="male">Male</label>
+    
+                <br>
+    
+                <input class="form-check-input" type="radio" name="gender" id="Female" value="female" #gender="ngModel" ngModel>
+    
+                <label class="form-check-label" for="female">Female</label>
+    
+        </div>
+    
+    
+    
+       <div>
+    
+            <label for="country">Country</label>
+    
+            <select (click)="changeCountry()" #country="ngModel" name="country" id="country" class="form-control" required ngModel>
+    
+                <option [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
+    
+            </select>
+    
+        </div>
+    
+    
+    
+        <div >
+    
+            <label for="passport" class="form-label">Passport</label>
+    
+            <input type="text" class="form-control" name="passport" id="passport" required #passport="ngModel" pattern="[0-9]{5}" ngModel>
+    
+            <div id="id" class="form-text"
+    
+                *ngIf="!passport.valid && (passport?.dirty || passport?.touched)">
+    
+                <span class="error" *ngIf="passport.errors?.['required']">Passport is Required</span>
+    
+                <span class="error" *ngIf="passport.errors?.['pattern'] || passport.errors?.['pattern']">
+    
+                        Passport have pattern of 5 numbers
+    
+                </span>
+    
+            </div>
+    
+        </div>
+    
+    
+    
+        <div>
+    
+            <label for="issuanceDate">Issuance Date</label>
+    
+            <input type="date" class="form-control" name="issuanceDate" id="issuanceDate" #issuanceDate="ngModel" ngModel required>
+    
+        </div>
+    
+    
+    
+        <div>
+    
+            <label for="noOfDependents">noOfDependents</label>
+    
+            <input type="number" name="noOfDependents" class="form-control" id="noOfDependents" #noOfDependents="ngModel" ngModel required>
+    
+                <div id="id" class="form-text"
+    
+                    *ngIf="!trusteeId.valid && (trusteeId?.dirty || trusteeId?.touched)">
+    
+                    <span class="error" *ngIf="noOfDependents.errors?.['required']"> noOfDependents is Required</span>
+    
+                </div>
+    
+        </div>
+    
+    
+    
+        <div class="btn">
+    
+            <button type="submit" [disabled]="!trusteeForm.valid" class="btn btn-outline-info">Submit</button>
+    
+            <button type="reset" class="btn btn-outline-dark">Reset</button>
+    
+        </div>
+    
+    
+    
+       
+    
+    </form>
+    
+    </div>

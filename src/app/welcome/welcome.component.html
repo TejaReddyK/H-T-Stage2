@@ -1,3 +1,91 @@
-<h1>welcome Component! {{logMsg}}</h1>
-<button (click)="callLog()">click</button>
+<h3>welcome</h3>
 
+<div class="divCenter">
+
+    <!-- {{welcomeMsg | transformData:' '}}
+
+    <br>
+
+    {{welcomeMsg2 | pipe:5}}
+
+    <br>
+
+    <input type="text" [(ngModel)]="num" style='width:50px;'/>  -->
+
+    <h1 id='msg'>{{data}}</h1>
+
+    <h1 id='msg2'>{{str}}</h1>
+
+</div>
+
+<div class="div">
+
+<div class="div1">
+
+<div [ngSwitch]="num">
+
+    <div *ngSwitchCase="1">one</div>
+
+    <div *ngSwitchCase="3">three</div>
+
+    <div *ngSwitchCase="5">five</div>
+
+    <div *ngSwitchCase="7">seven</div>
+
+    <div *ngSwitchDefault>sorry!! value not mentioned</div>
+
+</div>
+
+</div>
+
+ <div class="div2">
+
+<ng-container [ngSwitch]="num">
+
+    <ng-container *ngSwitchCase="1">
+
+        <ng-container *ngTemplateOutlet="template1And2"></ng-container>
+
+    </ng-container>
+
+    <ng-container *ngSwitchCase="2">
+
+        <ng-container *ngTemplateOutlet="template1And2"></ng-container>
+
+    </ng-container>
+
+
+
+    <ng-template #template1And2>the value is either 1 or 2</ng-template>
+
+
+
+    <ng-container *ngSwitchCase="3">
+
+        <ng-container *ngTemplateOutlet="template3And4"></ng-container>
+
+    </ng-container>
+
+    <ng-container *ngSwitchCase="4">
+
+        <ng-container *ngTemplateOutlet="template3And4"></ng-container>
+
+    </ng-container>
+
+
+
+    <ng-template #template3And4>the value is either 3 or 4</ng-template>
+
+
+
+    <ng-container *ngSwitchDefault>its default</ng-container>
+
+</ng-container>
+
+</div>
+
+</div>
+
+
+
+<button (click)="log2()">click</button>
