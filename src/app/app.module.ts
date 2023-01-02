@@ -19,6 +19,12 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDbEventService } from 'shared/inMemDbEventService';
 import { TrusteeComponent } from './trustee/trustee.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
+import { BookDataComponent } from './book/book.component';
+import { HomeComponent } from './home/home.component';
+import { AnimalDetailComponent } from './animal-details/animal-details.component';
+
+
+
 
 
 
@@ -39,6 +45,10 @@ import { StudentAddComponent } from './student/student-add/student-add.component
     EventListComponent,
     TrusteeComponent,
     StudentAddComponent,
+    BookDataComponent,
+    HomeComponent,
+    AnimalDetailComponent,
+    
   
     
     

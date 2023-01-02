@@ -1,0 +1,33 @@
+<div class="class">
+
+    <div class="card-header">
+
+        Animal Details
+
+    </div>
+
+    <div class="card-content">
+
+       
+
+        <img [src]='animal?.imageUrl' alt="image" style="height: 200px; width: 200px;">
+
+        <br>
+
+        Name: {{animal?.name}}
+
+        <br>
+
+        Age: {{animal?.age}}
+
+   
+
+    </div>
+
+    <p>
+
+        <button (click)="back()" class="btn btn-outline-dark">Back</button>
+
+    </p>
+
+</div>
