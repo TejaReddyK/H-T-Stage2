@@ -1,41 +1,41 @@
-<div class="card" style="width: 80%; margin: auto;">
-
+<div class="card">
     <div class="card-header">
-        <h2>Cart List</h2>
-        <h4>{{title}}</h4>
+     Shopping Cart
     </div>
-    
+
     <div class="card-body">
 
-    <div class="table-responsive">  
-        <table  *ngIf="cartList.length" class="table ">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th>Image</th>
-            </tr>
 
-            <tr *ngFor="let p of cartList ;let i = index">
-                <td>{{i+1}}</td>
-                <td>{{p.name}}</td>
-                <td>{{p.category}}</td>
-                <td>{{p.price}}</td>
-                <!-- <td>{{p.rating}}</td> -->
-                <td>
-                    <app-star 
-                        [rating]="p.rating"
-                        (ratingEventClicked) = "ratingClick($event)">
-                    </app-star>
-                    <!-- ratingClick is a function cart-list.comp.ts which is displayng result after stars clicked -->
-                </td>
-                <td><img src="{{p.image}}" alt=""></td>
-            </tr>
-        </table>
+    <div class="table-responsive">
+        <table *ngIf="products.length"   class="table  ">
+
+            <thead>
+                <tr>
+                 <th scope="col">Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let prod of products;let i = index">
+                  <td>{{i+1}}</td>
+                    <td >
+                     {{prod.name|uppercase}}
+                    </td>
+                    <td>{{prod.category}}</td>
+
+                    <td>{{prod.price|currency:'INR'}}</td>
+                     <!--<td>{{prod.rating}}</td>-->
+                     <td><input type="number" [(ngModel)]="prod.qty"></td>
+                         </tr>
+              </tbody>
+            </table>
+
     </div>
 
-</div>
 
-</div>
+    </div>
+
+
+    </div>

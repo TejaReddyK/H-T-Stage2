@@ -1,26 +1,23 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { Categories, IProduct } from '../product/product-list/product';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { IProduct } from '../products/product-list/product';
 
 @Component({
-  selector: 'app-cart-list',
+  selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+export class CartComponent implements OnInit,OnChanges {
+@Input() products:IProduct[]=[];
 
-export class CartComponent implements OnChanges{
- 
-  title:string='';
-
+  constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
-     
+    console.log('in onchanges')
+  this.products.forEach((e)=>console.log(e.name));
+
+
   }
 
-  @Input() cartList:IProduct[]=[];
-
-  ratingClick(msg:string):void{
-    // console.log('inside product click')
-    this.title = msg;
+  ngOnInit(): void {
   }
 
-  
 }

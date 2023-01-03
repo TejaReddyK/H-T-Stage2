@@ -2,19 +2,19 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { AnimalListComponent } from './animal-list.component';
+import { AnimalsListComponent } from './animal-list.component';
 
 describe('AnimalListComponent', () => {
-  let component: AnimalListComponent;
-  let fixture: ComponentFixture<AnimalListComponent>;
+  let component: AnimalsListComponent;
+  let fixture: ComponentFixture<AnimalsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnimalListComponent ]
+      declarations: [ AnimalsListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AnimalListComponent);
+    fixture = TestBed.createComponent(AnimalsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

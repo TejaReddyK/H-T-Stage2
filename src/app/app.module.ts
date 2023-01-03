@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductsListComponent } from './products/product-list/product-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PenthouseComponent } from './penthouse/penthouse.component';
 import { StarComponent } from './star/star.component';
 import { CartComponent } from './cart/cart.component';
 import { RepeatDataPipe } from './repeat-data.pipe';
-import { AnimalListComponent } from './animal/animal-list/animal-list.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EventDetailComponent } from './events/event-details/event-details.component';
@@ -21,7 +21,15 @@ import { TrusteeComponent } from './trustee/trustee.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { BookDataComponent } from './book/book.component';
 import { HomeComponent } from './home/home.component';
-import { AnimalDetailComponent } from './animal-details/animal-details.component';
+import { AnimalDetailsComponent } from './animal-details/animal-details.component';
+import { ProductAddComponent } from './products/product-list/product-add.component';
+import { LoginComponent } from './user/login.component';
+import { ShellComponent } from './home/shell.component';
+import { MenuComponent } from './home/menu.component';
+import { AnimalsListComponent } from './animal/animal-list/animal-list.component';
+import { AnimalAddComponent } from './animal/animal-list/animal-add.component';
+import { GreetingComponent } from './greeting/greeting.component';
+
 
 
 
@@ -33,13 +41,13 @@ import { AnimalDetailComponent } from './animal-details/animal-details.component
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
+    ProductsListComponent,
     WelcomeComponent,
     PenthouseComponent,
     StarComponent,
     CartComponent,
     RepeatDataPipe,
-    AnimalListComponent,
+    AnimalsListComponent,
     NavbarComponent,
     EventDetailComponent,
     EventListComponent,
@@ -47,7 +55,15 @@ import { AnimalDetailComponent } from './animal-details/animal-details.component
     StudentAddComponent,
     BookDataComponent,
     HomeComponent,
-    AnimalDetailComponent,
+    AnimalDetailsComponent,
+    ProductAddComponent,
+    LoginComponent,
+    ShellComponent,
+    MenuComponent,
+    AnimalAddComponent,
+    GreetingComponent
+ 
+    
     
   
     

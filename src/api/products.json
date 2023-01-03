@@ -1,38 +1,25 @@
 [
+
+  {
+
+      "id":111,
+      "name":"apples",
+      "category":"Category.fruits",
+
+      "price":180,
+      "image":"../../assets/images/apple.jpg",
+      "rating":3.5,
+      "qty":0
+
+     },
     {
-      "id":1 ,
-      "name":"Pant",
-      "price": 800,
-      "image": "../../assets/pant.jpg",
-      "category": "Categories.Clothing",
-      "rating": 4,
-      "quantity":0
-    },
-    {
-      "id":5,
-      "name":"Tshirt",
-      "price":600,
-      "image": "../../assets/tshirt.jpg",
-      "category": "Categories.Clothing",
-      "rating": 3.7,
-      "quantity":0
-    },
-    {
-      "id":10,
-      "name":"Table",
-      "price": 1600,
-      "image": "../../assets/table.jpg",
-      "category": "Categories.Furniture",
-      "rating": 4.5,
-      "quantity":0
-    },
-    {
-      "id":16,
-      "name":"Animal",
-      "price":400,
-      "image": "../../assets/dog.jpg",
-      "category": "Categories.Animal",
-      "rating": 4,
-      "quantity":0
-    }
-  ]
+
+      "id":112,
+      "name":"tomato",
+      "category":"Category.vegetables",
+
+      "price":340,
+      "image":"../../assets/images/tomato.jpg",
+      "rating":2,
+      "qty":0
+  }]

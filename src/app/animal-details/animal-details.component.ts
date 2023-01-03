@@ -3,9 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
-
-import { AnimalService, IAnimal } from '../animal/animal-list/animal';
-
+import { AnimalService } from 'shared/animal.service';
+import { Animal } from '../animal/animal-list/animal';
 
 
 @Component({
@@ -18,19 +17,15 @@ import { AnimalService, IAnimal } from '../animal/animal-list/animal';
 
 })
 
-export class AnimalDetailComponent implements OnInit, OnDestroy{
+export class AnimalDetailsComponent implements OnInit,OnDestroy {
 
-  id:number=0;
+id:number=0;
 
-  animal:IAnimal | undefined;
+animal :Animal | undefined;
 
-  sub!:Subscription
+sub!:Subscription
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router, private service:AnimalService){
-
-
-
-  }
+  constructor(private activatedRoute:ActivatedRoute,private router:Router,private service:AnimalService) { }
 
   ngOnDestroy(): void {
 
@@ -38,38 +33,44 @@ export class AnimalDetailComponent implements OnInit, OnDestroy{
 
   }
 
+
+
   ngOnInit(): void {
 
-    this.sub=this.activatedRoute.paramMap.subscribe((params)=>{
+  // we have to get the selected emp object here on this page at the time of its initialialsation
 
-      console.log(params);
 
-      let idd=params.get('id');
 
-      if(idd){
+     this.sub = this.activatedRoute.paramMap.subscribe((params)=>{
 
-        this.id=+idd;
+       console.log(params);
 
-      }
+       let idd=params.get('id');
 
-      if(this.service.getAnimalById(this.id)){
+        if(idd){
 
-        this.animal=this.service.getAnimalById(this.id)
+          this.id=+idd;
 
-      };
+        }
 
-    })
+
+
+       if(this.service.getAnimalById(this.id)){
+
+          //   this.animal = this.service.getAnimalById(this.id);
+
+       }
+
+     })
+
+
 
   }
-
-
 
   back():void{
 
-    this.router.navigate(['animal']);
+    this.router.navigate(['animals']);
 
   }
-
- 
 
 }

@@ -1,0 +1,10 @@
+.main-content{
+    padding: 20px;
+}
+.div1{
+    display: flex;
+    
+}
+.btn1, .btn2{
+    width: 20%;
+}

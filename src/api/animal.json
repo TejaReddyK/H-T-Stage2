@@ -1,0 +1,45 @@
+[
+    {
+      "id":1,
+  
+      "name":"Lion",
+  
+      "briefDescription":"King of Jungle",
+  
+      "image":"",
+  
+  
+      "category":"Category.wild"
+  
+      }
+  
+       ,{
+  
+      "id":2,
+  
+      "name":"Dog",
+  
+      "briefDescription":"King of weight",
+  
+      "image":"../../assets/gasStove.webp",
+  
+     
+  
+      "category":"Category.domestic"
+  
+    }
+  
+     ,{
+  
+      "id":3,
+  
+      "name":"Dog",
+  
+      "briefDescription":"Kind",
+  
+      "image":"../../assets/dog.jpg",
+
+  
+      "category":"Category.domestic"
+    }
+  ]

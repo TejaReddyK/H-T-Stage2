@@ -1,11 +1,4 @@
 .active{
-  
+    background-color: yellow;
     color:blue;
     }
-.nav{
-    background-color: black;
-}
-.div{
-    display: flex;
-    background-color: aqua;
-}

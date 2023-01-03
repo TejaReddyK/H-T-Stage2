@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 })
 
 export class LoggingService{
-    logProducts(products: import("../src/app/product/product-list/product").IProduct[]) {
+    logProducts(products: import("../src/app/products/product-list/product").IProduct[]) {
       throw new Error('Method not implemented.');
     }
     log():string{

@@ -35,7 +35,9 @@
     </div>
 
 </body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">My App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -65,3 +67,92 @@
         </div>
         </nav>
         <router-outlet></router-outlet>
+ -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <!--<nav-bar></nav-bar>
+<app-a></app-a>
+<app-c>
+</app-c>
+<h1>{{pageTitle}}</h1>
+<h2>{{name}}</h2>
+<div class="row">
+<div [ngClass]="cssStyle">this is div</div>
+  <h1 [ngStyle]="{'font-size':'40px','color':'purple'}">hello world</h1></div>
+<app-welcome></app-welcome>
+<event-list></event-list>
+<div class="container">
+<pent-house class="flex-item"></pent-house>
+<app-welcome class="flex-item"></app-welcome>
+</div>
+<flat-list></flat-list>
+ <products-list (OnProductSelection)="onProductSelection($event)"></products-list>
+<app-cart [products]="products"></app-cart>
+<event-list></event-list>
+<router-outlet></router-outlet>
+</body>
+</html>
+<app-welcome></app-welcome>
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+-->
+
+<!--<app-employee></app-employee>
+<app-student-add></app-student-add>
+<app-employee-array></app-employee-array>-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">My App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link"
+        [routerLink]="['event']"
+         [routerLinkActive]='["active"]'>
+         Event <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['book']"
+        routerLinkActive="active">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['products']"
+        routerLinkActive="active">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+        [routerLink]="['animals']"
+        routerLinkActive="active">Animals</a>
+      </li>
+
+     
+</ul>
+</div>
+</nav>
+
+<router-outlet></router-outlet>
+</body>
+</html>

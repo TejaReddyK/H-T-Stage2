@@ -3,8 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { EventDetailComponent } from './events/event-details/event-details.component';
-import { AnimalListComponent } from './animal/animal-list/animal-list.component';
-import { AnimalDetailComponent } from './animal-details/animal-details.component';
+import { AnimalsListComponent } from './animal/animal-list/animal-list.component';
+import { AnimalDetailsComponent } from './animal-details/animal-details.component';
+import { AuthGuard } from './user/auth-guard.service';
+import { LoginComponent } from './user/login.component';
+import { ProductAddComponent } from './products/product-list/product-add.component';
+import { ProductsListComponent } from './products/product-list/product-list.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ShellComponent } from './home/shell.component';
+import { BookDataComponent } from './book/book.component';
+import { AnimalAddComponent } from './animal/animal-list/animal-add.component';
 
 //created  a Routes array
 //Routes
@@ -36,7 +44,7 @@ import { AnimalDetailComponent } from './animal-details/animal-details.component
   {path:'addProduct',component:ProductAddComponent},
   {path:'',pathMatch:'full' ,component:AppComponent}]
 */
-const routes:Routes=[
+/* const routes:Routes=[
 
   {
 
@@ -49,7 +57,7 @@ path:'student',component:StudentAddComponent
 {path:'event',component:EventDetailComponent},
 /* {
   path:'animal',component:AnimalListComponent
-}, */
+}, 
 {path:'animal',component:AnimalListComponent,
 children:[
   {
@@ -61,4 +69,79 @@ children:[
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { } */
+const routes:Routes=[
+
+  {path:'',component:HomeComponent,pathMatch:'full',},
+  
+ 
+  
+  {path:'book',component:BookDataComponent},
+  
+  {path:'',component:ShellComponent,
+  
+    children:[{path:'welcome', component:WelcomeComponent},
+  
+    {
+  
+      path:'products',
+  
+      component:ProductsListComponent,
+  
+      canActivate:[AuthGuard],
+  
+      children:[{path:'addProduct',component:ProductAddComponent}]
+  
+    },
+  
+    {path:'',redirectTo:'welcome',pathMatch:'full'},
+  
+    {path:'login',component:LoginComponent}
+  
+  ]},
+  
+  /*{path:'products',component:ProductsListComponent,
+  
+   children:[
+  
+    {path:'addProduct',component:ProductAddComponent}
+  
+  ]}, */
+  
+  {path:'event',component:EventDetailComponent},
+
+  {path:'',component:ShellComponent,
+  
+    children:[{path:'welcome', component:WelcomeComponent},
+  
+    {
+  
+      path:'animals',
+  
+      component:AnimalsListComponent,
+  
+      canActivate:[AuthGuard],
+  
+      children:[{path:'addAnimal',component:AnimalAddComponent}]
+  
+    },
+  
+    {path:'',redirectTo:'welcome',pathMatch:'full'},
+  
+    {path:'login',component:LoginComponent}
+  
+  ]},
+  
+ 
+  
+  ]
+  
+  @NgModule({
+  
+    imports: [RouterModule.forRoot(routes)],
+  
+    exports: [RouterModule]
+  
+  })
+  
+  export class AppRoutingModule { }
