@@ -148,7 +148,7 @@ export class InMemoryDbEventService implements InMemoryDbService {
           
               "image":"../../assets/tiger.jpg",
           
-              "category":"Category.wild"
+              "category":"wild"
           
               }
           
@@ -163,7 +163,7 @@ export class InMemoryDbEventService implements InMemoryDbService {
               "image":"../../assets/dog.jpg",
 
           
-              "category":"Category.domestic"
+              "category":"domestic"
           
             }
           
@@ -178,7 +178,7 @@ export class InMemoryDbEventService implements InMemoryDbService {
               "image":"../../assets/cat.jpg",
           
           
-              "category":"Category.domestic"
+              "category":"domestic"
             }
           ]
 

@@ -35,12 +35,9 @@ export class AnimalAddComponent implements OnInit ,OnDestroy {
       category:{
         required:'Category is required'
       },
-      physicalStrength:{
-        required:'PhysicalStrength is required'
-      },image:{
+      
+      image:{
         required:'Image is required'
-      },color:{
-        required:'Color is required'
       },briefDescription:{
         required:'briefDescription is required'}
 
@@ -59,11 +56,10 @@ export class AnimalAddComponent implements OnInit ,OnDestroy {
     this.addAnimal = this.formBuilder.group({
       id: [],
       name: ['',[ Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
-      color:['',[Validators.required]],
       briefDescription:['',[Validators.required]],
       image:['',[Validators.required]],
       category:[Category.wild,[Validators.required]],
-      physicalStrength:[3,[Validators.required]]
+    
 
     });
 

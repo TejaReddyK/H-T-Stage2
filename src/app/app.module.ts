@@ -29,6 +29,8 @@ import { MenuComponent } from './home/menu.component';
 import { AnimalsListComponent } from './animal/animal-list/animal-list.component';
 import { AnimalAddComponent } from './animal/animal-list/animal-add.component';
 import { GreetingComponent } from './greeting/greeting.component';
+import { CardListComponent } from './cards/cardlist.component';
+import { CardComponent } from './cards/card.component';
 
 
 
@@ -61,7 +63,9 @@ import { GreetingComponent } from './greeting/greeting.component';
     ShellComponent,
     MenuComponent,
     AnimalAddComponent,
-    GreetingComponent
+    GreetingComponent,
+    CardListComponent,
+    CardComponent
  
     
     

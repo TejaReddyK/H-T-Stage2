@@ -11,13 +11,6 @@
         (blur)="blur()"
         name="name" class="form-control" id="name">
       </div>
-
-      <div class="form-group">
-        <label for="color"> Color:</label>
-        <input type="text" formControlName="color"
-         placeholder="color"
-         (blur)="blur()" name="color" class="form-control" id="color">
-      </div>
       
       <div class="form-group">
         <label for="briefDescription"> briefDescription:</label>
@@ -44,15 +37,6 @@
         <input (blur)="blur()" type="text" formControlName="image"
         placeholder="Animal image" name="image" class="form-control" id="image">
       </div>
-
-
-
-      <div class="form-group">
-        <label for="physicalStrength">physicalStrength:</label>
-        <input (blur)="blur()" type="number" min="1" max="5"
-        formControlName="physicalStrength" placeholder="Animal Strength" name="physicalStrength" class="form-control" id="physicalStrength" >
-      </div>
-
       <button class="btn btn-danger" type="button"
       (click)="deleteAnimal(animal)">Delete Animal</button>
       <button [disabled]='!addAnimal.valid ||!addAnimal.dirty' class="btn btn-success">Save Animal</button>

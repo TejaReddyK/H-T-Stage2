@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductsListComponent } from './product-list.component';
@@ -10,7 +12,9 @@ describe('ProductsListComponent', () => {
     //first building block of angular testing module
     //TestBed
     await TestBed.configureTestingModule({
-      declarations: [ ProductsListComponent ]
+      declarations: [ ProductsListComponent ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      imports:[HttpClientModule]
     })
     .compileComponents();
 
@@ -23,6 +27,6 @@ describe('ProductsListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+
 
 });
