@@ -1,22 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Observable, Subject } from 'rxjs';
+
+
 
 @Component({
-  selector: 'card-list',
-  template: `
-  <h1> Card List</h1>
-      <card>
-        <header #header><h1>Angular</h1></header>
-      <p #p1>this is a para1</p>
-      </card>
-      <card>
-        <header #header><h1 style="color:red;">React</h1></header>
-      </card>
-      <card>
-        <header #header> <h1>Typescript</h1> </header>
-        <p #p1>this is a para3</p>
-      </card>
-  `,
+
+  selector: 'cardlist',
+
+  templateUrl: './cardlist.component.html',
+
+  styleUrls: ['./cardlist.component.css']
+
 })
-export class CardListComponent {
+
+export class CardlistComponent implements OnInit{
+
+    ngOnInit(): void {
+
+      const obs1=new Observable((data)=>data.next(Math.random()));
+
+      obs1.subscribe(d=>console.log(d));
+
+      obs1.subscribe(d=>console.log(d));
+
+
+
+      const subject=new Subject();
+
+      subject.subscribe(d=>console.log(d));
+
+      subject.subscribe(d=>console.log(d));
+
+      subject.next(Math.random());
+
+    }
 
 }

@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductsListComponent } from './products/product-list/product-list.component';
+//import { ProductsListComponent } from './products/product-list/product-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PenthouseComponent } from './penthouse/penthouse.component';
-import { StarComponent } from './star/star.component';
+//import { StarComponent } from './star/star.component';
 import { CartComponent } from './cart/cart.component';
 import { RepeatDataPipe } from './repeat-data.pipe';
 
@@ -22,15 +22,20 @@ import { StudentAddComponent } from './student/student-add/student-add.component
 import { BookDataComponent } from './book/book.component';
 import { HomeComponent } from './home/home.component';
 import { AnimalDetailsComponent } from './animal-details/animal-details.component';
-import { ProductAddComponent } from './products/product-list/product-add.component';
+//import { ProductAddComponent } from './products/product-list/product-add.component';
 import { LoginComponent } from './user/login.component';
 import { ShellComponent } from './home/shell.component';
 import { MenuComponent } from './home/menu.component';
 import { AnimalsListComponent } from './animal/animal-list/animal-list.component';
 import { AnimalAddComponent } from './animal/animal-list/animal-add.component';
 import { GreetingComponent } from './greeting/greeting.component';
-import { CardListComponent } from './cards/cardlist.component';
+import { CardlistComponent } from './cards/cardlist.component';
 import { CardComponent } from './cards/card.component';
+import { AppEffects } from './app.effect';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+//import { ProductShellComponent } from './products/product-list/product-shell.component';
 
 
 
@@ -43,10 +48,10 @@ import { CardComponent } from './cards/card.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsListComponent,
+  //  ProductsListComponent,
     WelcomeComponent,
     PenthouseComponent,
-    StarComponent,
+  //  StarComponent,
     CartComponent,
     RepeatDataPipe,
     AnimalsListComponent,
@@ -58,14 +63,17 @@ import { CardComponent } from './cards/card.component';
     BookDataComponent,
     HomeComponent,
     AnimalDetailsComponent,
-    ProductAddComponent,
+   // ProductAddComponent,
     LoginComponent,
     ShellComponent,
     MenuComponent,
     AnimalAddComponent,
     GreetingComponent,
-    CardListComponent,
-    CardComponent
+    CardlistComponent,
+    CardComponent,
+    //ProductShellComponent,
+    
+    
  
     
     
@@ -80,7 +88,12 @@ import { CardComponent } from './cards/card.component';
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDbEventService),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}),
+    //have to create AppEffects
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

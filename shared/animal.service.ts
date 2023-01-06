@@ -30,7 +30,7 @@ export class AnimalService{
 
     ///api/products --will be resolved from in-memory web api -- /api/products
 
- private url="api/animal";
+ public url="api/animal";
 
  animals:Animal[]=[];
 

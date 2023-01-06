@@ -1,5 +1,7 @@
-export enum Category{
-    animal='animals', fruits='fruits', flowers='flowers' ,vegetables='vegetables',pulses='pulses',cereals='cereals'
+export enum Category {
+    animal = 'animals', fruits = 'fruits', flowers = 'flowers', vegetables = 'vegetables', pulses = 'pulses', cereals = 'cereals',
+    wild = "wild",
+    domestic = "domestic"
 }
 export interface IProduct{
 

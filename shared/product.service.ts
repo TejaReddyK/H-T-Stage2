@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, tap , BehaviorSubject, throwError, map } from "rxjs";
-import { Category, IProduct } from "src/app/products/product-list/product";
+import { IProduct, Category } from "src/app/products/product-list/product";
+
 
 @Injectable({
     providedIn:'root'
@@ -103,7 +104,7 @@ changeSelectedProduct(selectedProduct:IProduct | null):void{
         name:'',
         category:Category.fruits,
         price:0,
-        image:'\\assets\\dog.jpg',
+        image:'\\assets\\images\\tomato.jpg',
         rating:0,
         qty:0
 
@@ -140,7 +141,8 @@ changeSelectedProduct(selectedProduct:IProduct | null):void{
 
          console.log('in create new product'+ JSON.stringify(data));
          //pushing the new data new Product to the products array
-         this.products.push(data);
+        // this.products.push(data);
+         console.log(JSON.stringify(this.products));
 
         },
         catchError(this.errorHandler)
@@ -161,9 +163,9 @@ changeSelectedProduct(selectedProduct:IProduct | null):void{
         console.log('deleted prd'+id);
        const foundIndex = this.products.findIndex(item=>item.id===id);
        //if product id is not found means index returned will be -1
-       if(foundIndex > -1)
+      /*  if(foundIndex > -1)
        this.products.splice(foundIndex,1);
-
+ */
 
       },
       catchError(this.errorHandler))

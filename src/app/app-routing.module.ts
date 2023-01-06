@@ -83,16 +83,11 @@ const routes:Routes=[
     children:[{path:'welcome', component:WelcomeComponent},
   
     {
-  
       path:'products',
-  
       component:ProductsListComponent,
-  
       canActivate:[AuthGuard],
-  
-      children:[{path:'addProduct',component:ProductAddComponent}]
-  
-    },
+      loadChildren:()=>import('../app/product/product.module').then(m=>m.ProductModule)
+     },
   
     {path:'',redirectTo:'welcome',pathMatch:'full'},
   
@@ -128,7 +123,11 @@ const routes:Routes=[
   
     {path:'',redirectTo:'welcome',pathMatch:'full'},
   
-    {path:'login',component:LoginComponent}
+    {path:'login',component:LoginComponent},
+    {
+      path:'todo',
+      loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+      },
   
   ]},
   

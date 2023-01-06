@@ -1,29 +1,37 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { GenericValidator } from 'shared/genericvalidator';
+import {  Store } from '@ngrx/store';
+
+
+
+import { Observable, Subscription, tap } from 'rxjs';
+
 import { ProductService } from 'shared/product.service';
 import { Category, IProduct } from './product';
-
+import * as ProductActions from 'src/app/state/products/product.actions'
+import { GenericValidator } from 'shared/genericvalidator';
+import { State } from 'src/app/state/app.state';
+import { getCurrentProduct } from 'src/app/state/products/product.selector';
 @Component({
-  selector: 'app-product-add',
+  selector: 'product-add',
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent implements OnInit ,OnDestroy {
   pageTitle='Edit Product';
   errorMessage='';
+  product$!: Observable<IProduct | null | undefined  >;
 
   addProduct!: FormGroup;
-  product!:IProduct | null;
+  product!:IProduct | null | undefined;
   sub!:Subscription;
   displayMessage: {[key:string]:string}={};
     private validationMessages!:{[key:string]:{[key:string]:string}};
 
     private genericValidator!:GenericValidator;
 
-    constructor(private formBuilder: FormBuilder,private router: Router, private productService:ProductService ) {
+    constructor(private store:Store<State>,private formBuilder: FormBuilder,private router: Router, private productService:ProductService ) {
 
       this.validationMessages={
 
@@ -49,12 +57,12 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
 
    }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+ //   this.sub.unsubscribe();
   }
 
 
   ngOnInit() {
-
+   console.log('in init of product add ,creating form');
     this.addProduct = this.formBuilder.group({
       id: [],
       name: ['',[ Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
@@ -65,13 +73,31 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
 
     });
 
+    console.log('created add form ')
+
+// Watch for changes to the currently selected product
+    this.product$ = this.store.select(getCurrentProduct)
+      .pipe(
+        tap(currentProduct => this.displayProduct(currentProduct))
+      );
+this.product$.subscribe(resp=>this.product=resp);
+console.log('selected current product in ng onit add product ',this.product);
+    // Watch for value changes for validation
+    this.addProduct.valueChanges.subscribe(
+      () => this.displayMessage =
+      this.genericValidator.processMessages(this.addProduct)
+    );
+console.log('value in form changes')
+
+
+
     //when the product is selected from the product list , it should be displayed on the form
 
-    this.sub=this.productService.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
+    //this.sub=this.productService.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
 
 
     this.addProduct.valueChanges.
-    subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addProduct))
+    subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addProduct));
   }
   get id(){
     return this.addProduct.get("id");
@@ -102,8 +128,8 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
   }
  */
 //method which renders the selected product on the form
-  displayProduct(productParam:IProduct |null):void{
-
+  displayProduct(productParam:IProduct |null |undefined):void{
+   console.log(this.product,'in display product of product add component ');
    this.product = productParam;
    if(this.product){
 //reset the form to its original
@@ -142,22 +168,25 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
         //we arecopying data from teh addform
         //{...} it ensures that values are not lost ids are retained
         const product={...originalProduct,...this.addProduct.value};
-
+        console.log(product,'saveProduct of product add');
       if(product.id==0){
-        this.productService.createProduct(product).subscribe(
-          (resp)=>{
-            this.productService.changeSelectedProduct(resp);
-            console.log(resp);},
 
-          (err)=>this.errorMessage=err
-        );
+        this.store.dispatch(ProductActions.createProduct({product}));
+        // this.productService.createProduct(product).subscribe(
+        //   (resp)=>{
+        //     this.productService.changeSelectedProduct(resp);
+        //     console.log(resp);},
+
+        //   (err)=>this.errorMessage=err
+        // );
 
      }
-     else{
+     else{this.store.dispatch(ProductActions.updateProduct({ product }));
 
-      this.productService.updateProduct(product).subscribe(
-       resp=>this.productService.changeSelectedProduct(resp),
-       err=>this.errorMessage=err      );
+
+      // this.productService.updateProduct(product).subscribe(
+      //  resp=>this.productService.changeSelectedProduct(resp),
+      //  err=>this.errorMessage=err      );
 
      }
       }
@@ -177,16 +206,20 @@ export class ProductAddComponent implements OnInit ,OnDestroy {
 
       if(confirm(`Are you sure you want to delete ${prod.name} details`)){
 
-        this.productService.deleteProduct(prod.id).subscribe(
-          resp=>this.productService.changeSelectedProduct(null),
-          err=>this.errorMessage=err
-        );
+
+        this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));
+
+        // this.productService.deleteProduct(prod.id).subscribe(
+        //   resp=>this.productService.changeSelectedProduct(null),
+        //   err=>this.errorMessage=err
+        // );
       }
       else{
-        //no need to delete the product
-        this.productService.changeSelectedProduct(null)
+// No need to delete, it was never saved
+this.store.dispatch(ProductActions.clearCurrentProduct());
+
+     // this.productService.changeSelectedProduct(null)
       }
-      
     }
 
   }

@@ -5,6 +5,7 @@ import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { Observable } from "rxjs";
 import { IEvent } from "src/app/events/event-details/events";
 import { Category, IProduct } from "src/app/products/product-list/product";
+import { Todo } from "src/app/todo/todo.model";
 
 @Injectable({
     providedIn:'root'
@@ -12,7 +13,10 @@ import { Category, IProduct } from "src/app/products/product-list/product";
 
 export class InMemoryDbEventService implements InMemoryDbService {
     
-    createDb(reqInfo?: RequestInfo | undefined): {} | Observable<{}> | Promise<{}> { 
+    createDb(reqInfo?: RequestInfo | undefined): {} | Observable<{}> | Promise<{}> {
+        
+            const todos: Todo[]=[{id:'111',content:'hello'},{id:'222',content:'angular web db'}];
+            
         
         let events:IEvent[] = [
            {
@@ -117,11 +121,11 @@ export class InMemoryDbEventService implements InMemoryDbService {
       {
 
         "id":111,
-        "name":"cat",
-        "category":Category.animal,
+        "name":"apple",
+        "category":Category.fruits,
 
         "price":180,
-        "image":"../../assets/cat.jpg",
+        "image":"../../assets/apple.jpg",
         "rating":3.5,
         "qty":0
 
@@ -129,11 +133,11 @@ export class InMemoryDbEventService implements InMemoryDbService {
       {
 
         "id":112,
-        "name":"dog",
-        "category":Category.animal,
+        "name":"potato",
+        "category":Category.vegetables,
 
         "price":340,
-        "image":"../../assets/dog.jpg",
+        "image":"../../assets/potato.jpg",
         "rating":2,
         "qty":0
     }
@@ -182,7 +186,7 @@ export class InMemoryDbEventService implements InMemoryDbService {
             }
           ]
 
-        return {events, products, animal};
+        return {events, products, animal, todos};
                 
     }
 

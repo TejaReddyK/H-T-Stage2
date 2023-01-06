@@ -57,26 +57,27 @@ afterEach(() => {
 
       {
 
-          "id":111,
-          "name":"apples",
-          "category":Category.fruits,
+        id:111,
+        name:"apples",
+        category:Category.fruits,
 
-          "price":180,
-          "image":"../../assets/images/apple.jpg",
-          "rating":3.5,
-          "qty":0
+        price:200,
+        image:"../../assets/images/mangoes.jpg",
+        rating:3.5,
+        qty:0
 
          },
         {
 
-          "id":112,
-          "name":"tomato",
-          "category":Category.vegetables,
+          id:112,
+      name:"mangoes",
+      category:Category.fruits,
 
-          "price":340,
-          "image":"../../assets/images/tomato.jpg",
-          "rating":2,
-          "qty":0
+      price:300,
+      image:"../../assets/images/mangoes.jpg",
+      rating:3.5,
+      qty:0
+
       }];
 
 
@@ -111,14 +112,15 @@ afterEach(() => {
 
      let item ={
 
-      "id":111,
-      "name":"apples",
-      "category":Category.fruits,
+      id:114,
+      name:"mangoes",
+      category:Category.fruits,
 
-      "price":180,
-      "image":"../../assets/images/apple.jpg",
-      "rating":3.5,
-      "qty":0
+      price:300,
+      image:"../../assets/images/mangoes.jpg",
+      rating:3.5,
+      qty:0
+
 
      };
 
@@ -135,39 +137,40 @@ afterEach(() => {
    it('createProduct() should post a product and    return that new product  as data',()=>{
 
 
-    let item ={
+    const item:IProduct={
+      id:114,
+      name:"mangoes",
+      category:Category.fruits,
 
-      "id":113,
-      "name":"mangoes",
-      "category":Category.fruits,
+      price:300,
+      image:"../../assets/images/mangoes.jpg",
+      rating:3.5,
+      qty:0
 
-      "price":300,
-      "image":"../../assets/images/mangoes.jpg",
-      "rating":4.5,
-      "qty":0
+     };
+
+
+    const item2:IProduct ={
+
+      id:115,
+      name:"Strawberies",
+      category:Category.fruits,
+
+      price:300,
+      image:"../../assets/images/mangoes.jpg",
+      rating:3.5,
+      qty:0
 
      };
 
-
-    let item2 ={
-
-      "id":114,
-      "name":"mangoes",
-      "category":Category.fruits,
-
-      "price":300,
-      "image":"../../assets/images/mangoes.jpg",
-      "rating":3.5,
-      "qty":0
-
-     };
     items =[...items,item];
-     service.createProduct(item).subscribe(resp=>expect(resp).toEqual(item2) )
-     expect(items.length).toEqual(2);
+     service.createProduct(item).subscribe(resp=>expect(resp).toEqual(item));
+     expect(items.length).toEqual(3);
 
      const req = httpMock.expectOne(service.url);
      expect(req.request.method).toBe('POST');
-     req.flush({item });
+     //here the item is the response flushed , as the response body 
+     req.flush(item);
 
      });
 
@@ -179,14 +182,14 @@ afterEach(() => {
 
       let item2 ={
 
-        "id":112,
-        "name":"Ratnagiri mangoes",
-        "category":Category.fruits,
+        id:114,
+        name:"mangoes",
+        category:Category.fruits,
 
-        "price":300,
-        "image":"../../assets/images/mangoes.jpg",
-        "rating":4.5,
-        "qty":0
+        price:300,
+        image:"../../assets/images/mangoes.jpg",
+        rating:3.5,
+        qty:0
 
        };
 
