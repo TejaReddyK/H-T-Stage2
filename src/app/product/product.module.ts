@@ -13,7 +13,7 @@ import { ProductEffects } from '../state/products/product.effects';
 import { productReducer } from '../state/products/product.reducer';
 import { ProductShellComponent } from '../products/product-list/product-shell.component';
 import { ProductsListComponent } from '../products/product-list/product-list.component';
-
+import { RouterModule } from '@angular/router';
 
 
 
@@ -27,6 +27,7 @@ ProductShellComponent,
   imports: [
     CommonModule,FormsModule,ReactiveFormsModule,
     ProductRoutingModule,
+    RouterModule,
     StoreModule.forFeature('products', productReducer),
     EffectsModule.forFeature([ProductEffects])]
 })

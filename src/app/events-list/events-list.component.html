@@ -1,7 +1,6 @@
-<div class="parent">
-
+<!-- <h1 id="input">{{message}}</h1> -->
+<!-- <div class="parent">
     <div *ngFor="let ev of eventsList;">
-
         <div class="card" style="width: 24rem;">
             <img class="card-img-top img-fluid" height="100px" width="100px" [src]="ev.imageUrl" alt="Card image cap">
             <div class="card-header text-center">
@@ -47,15 +46,81 @@
                             </li>
                         </ul>
                     </li>
-
                 </ul>
-
             </div>
         </div>
         
     </div>
-    </div>
+</div> -->
 
-<div id="data">{{event|json}}</div>
+<div id="event-list">
+    <mat-card class="example-card" *ngFor="let ev of eventsList;">
+        <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>#{{ev.id}} {{ev.name}}</mat-card-title>
+        <mat-card-subtitle>
+            <h6 class="text-secondary">{{ev.location.address}}, {{ev.location.city}}, {{ev.location.country}}</h6>
+        </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image height="24%" [src]="ev.imageUrl" alt="Card image cap">
+        <mat-card-content>
+            <div class="card" style="width: 24rem;">
+                <!-- <div class="card-header text-center">
+                    <h4>#{{ev.id}} {{ev.name}}</h4>
+                </div> -->
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <h6>Date and Time: </h6>
+                            <h6 class="text-secondary"> {{ ev.date}}, {{ ev.time}}</h6> 
+                        </li>
+                        <li class="list-group-item">
+                            <h6>Price:</h6> 
+                            <h6 class="text-secondary">{{ev.price}}</h6>
+                        </li>
+                        <!-- <li class="list-group-item">
+                            <h6>Location: </h6> 
+                            <h6 class="text-secondary">{{ev.location.address}}, {{ev.location.city}}, {{ev.location.country}}</h6>
+                        </li> -->
+                        <li class="list-group-item" style="flex-direction: column;" 
+                        *ngFor="let session of ev.sessions;">
+                            <h6>Session {{session.id}} on:  {{session.name}}</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h6>Presentor: </h6>
+                                    <h6 class="text-secondary">{{session.presentor}}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <h6>Duration: </h6>
+                                    <h6 class="text-secondary">{{session.duration}}</h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <h6>Level: </h6>
+                                    <h6 class="text-secondary">{{session.level}}</h6>
+                                </li>
+                                <!-- <li class="list-group-item">
+                                    <h6>Voters: </h6>
+                                    <h6 class="text-secondary">
+                                        <span>
+                                            {{session.voters}}
+                                        </span>
+                                    </h6>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
 
-<div id="messageDisplay">{{ message }}</div>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <!-- <mat-card-actions>
+        <button mat-button>REGISTER</button>
+        <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+    </mat-card>
+</div>
+  
+<button style="margin:20px 45%;" class="btn btn-info" [routerLink]="['addEvent']">
+    Add Event</button>
+

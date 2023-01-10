@@ -11,8 +11,11 @@ import { IEvent } from './events';
 })
 export class EventDetailComponent {
 
+  message:string='';
   
   constructor(private eventService:EventService){}
+
+  eventDetailMsg:string = 'eventDetailMsg';
 
   sub!:Subscription;
 

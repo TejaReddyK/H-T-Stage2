@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { Observable } from "rxjs";
+
 import { IEvent } from "src/app/events/event-details/events";
 import { Category, IProduct } from "src/app/products/product-list/product";
 import { Todo } from "src/app/todo/todo.model";
@@ -142,7 +143,7 @@ export class InMemoryDbEventService implements InMemoryDbService {
         "qty":0
     }
          ]
-         let animal = [
+         let animal= [
             {
               "id":1,
           

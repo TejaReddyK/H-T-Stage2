@@ -11,13 +11,33 @@ import { Location } from '@angular/common';
 import { State } from 'src/app/state/app.state';
 import { ProductService } from 'shared/product.service';
 import { getCurrentProduct, getError, getProducts } from 'src/app/state/products/product.selector';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 @Component({
   selector: 'products-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
-})
+  styleUrls: ['./product-list.component.css'],
+  animations:[
+    trigger('enlarge',[
+
+      state('start',style({
+       width:'50px' , height:'50px'
+      })),
+
+    state('end',style({
+      height:'200px',width:'200px'
+    })),
+     //transition('start=>end',animate('1s linear')),
+    transition('start=>end',[
+      animate('1s 2s')
+    ]),
+    transition('end=>start',[
+      animate('1s 2s')
+    // ]),
+    ]),
+    ])]})
 export class ProductsListComponent implements OnInit ,OnDestroy {
-errorMessage:string='';
+  isHovering : boolean =false;
+  errorMessage:string='';
 sub!:Subscription;
 prod!:IProduct;
 products:IProduct[]=[];
@@ -80,6 +100,10 @@ obsProducts$!:Observable<IProduct[]>;
      ngOnDestroy(): void {
        //this.sub.unsubscribe();
   }
+  
+  
+  
+
 
 
 
@@ -116,4 +140,7 @@ this.store.dispatch(ProductActions.setCurrentProduct({currentProductId:product.i
     this.productService.getProductById(id).subscribe(resp=>this.prod=resp);
     return this.prod;
   }
+  applyAnimation($event: any){
+    this.isHovering=!this.isHovering;
+}
 }

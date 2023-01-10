@@ -1,11 +1,14 @@
+
 .parent{
     margin-top: 30px;
     display: flex !important;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card{
     margin: 10px 20px;
+    border: none;
 }
 
 .list-group-item{
@@ -16,7 +19,16 @@ h6{
     margin-right: 10px;
 }
 
-.card-img-top{
+/* .card-img-top{
     width: 60% !important;
     margin: auto !important;
+} */
+
+#event-list{
+   display: flex;
+   justify-content: center;
+}
+
+.example-card {
+    max-width: 400px;
 }

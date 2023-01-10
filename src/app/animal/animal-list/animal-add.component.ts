@@ -7,7 +7,7 @@ import { GenericValidator } from 'shared/genericvalidator';
 import { Animal, Category } from './animal';
 
 @Component({
-  selector: 'app-animal-add',
+  selector: 'animal-add',
   templateUrl: './animal-add.component.html',
   styleUrls: ['./animal-add.component.css']
 })
@@ -158,7 +158,7 @@ export class AnimalAddComponent implements OnInit ,OnDestroy {
      }
       }
 
-      this.router.navigate(['animals'])
+      this.router.navigate(['animal'])
     }
 
   }

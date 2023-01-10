@@ -1,2 +1,6 @@
 
-<app-event-list [eventsList]="eventsList"></app-event-list>
+<h1 class="text-center mt-3">Events List</h1>
+
+<app-event-list [eventsList]="eventsList" [message]="eventDetailMsg"></app-event-list>
+
+<router-outlet></router-outlet>

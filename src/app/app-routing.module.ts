@@ -13,6 +13,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ShellComponent } from './home/shell.component';
 import { BookDataComponent } from './book/book.component';
 import { AnimalAddComponent } from './animal/animal-list/animal-add.component';
+import { EventAddComponent } from './events/event-details/event-add.component';
 
 //created  a Routes array
 //Routes
@@ -74,13 +75,18 @@ const routes:Routes=[
 
   {path:'',component:HomeComponent,pathMatch:'full',},
   
- 
+  {path:'event',component:EventDetailComponent,
+  children:[
+    {path:'addEvent',component:EventAddComponent}
+  ]
+},
   
   {path:'book',component:BookDataComponent},
   
   {path:'',component:ShellComponent,
   
     children:[{path:'welcome', component:WelcomeComponent},
+    
   
     {
       path:'products',
@@ -103,22 +109,18 @@ const routes:Routes=[
   
   ]}, */
   
-  {path:'event',component:EventDetailComponent},
+  
+  
 
   {path:'',component:ShellComponent,
   
     children:[{path:'welcome', component:WelcomeComponent},
   
     {
-  
       path:'animals',
-  
       component:AnimalsListComponent,
-  
       canActivate:[AuthGuard],
-  
-      children:[{path:'addAnimal',component:AnimalAddComponent}]
-  
+      loadChildren:()=>import('../app/animall/animal.module').then(m=>m.AnimalModule)
     },
   
     {path:'',redirectTo:'welcome',pathMatch:'full'},

@@ -194,10 +194,10 @@ changeSelectedProduct(selectedProduct:IProduct | null):void{
     return this.getProducts().pipe(
       tap(()=>{console.log('fetch product'+id);
        this.foundIndex =this.products.findIndex(item=>item.id ==id);
-      if(this.foundIndex > -1){
+     /*  if(this.foundIndex > -1){
         this.products[this.foundIndex];
-          }
-      }),
+          }*/
+      }), 
       map(()=>this.products[this.foundIndex]),
       catchError(this.errorHandler)
       );
